@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    background-color: #72bb53;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .speed-wrapper {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    font-size: 30px;
+  }
+
+  .speed-info {
+    display: flex;
+    color: crimson;
+  }
+
+  .circle-title {
+    margin-top: -7px;
+    margin-bottom: 12px;
+  }
+
+  .circle-info .circle {
+    text-align: left;
+  }
+
+  .circles {
+    width: 100px;
+    margin-top: 32px;
+    font-size: 18px;
+  }
+
+  .sources {
+    display: none;
+  }
+  #canvas{
+    width: 33%;
+    height: 33%;
+  }
