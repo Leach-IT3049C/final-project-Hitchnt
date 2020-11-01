@@ -26,7 +26,7 @@ function myFunction(){
   }
 if(Game1 == false){
   if(SpeedMaintain >=5 ){
-  alert('gratz moving to nect stage');
+  alert('gratz moving to next stage');
   Game1=true;
   }
 }
