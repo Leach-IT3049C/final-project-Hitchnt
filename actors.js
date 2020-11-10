@@ -200,7 +200,7 @@ class Player extends Car {
 
 Player.height = 160
 Player.width = 80
-Player.rotationDeg = 10
+Player.rotationDeg = 15
 Player.image = playerImg
 
 

@@ -12,9 +12,10 @@ let intervalID = null;
 const timeDisplay = document.querySelector('.time-display');
 let timeInSeconds = 0;
 
+
+
 // loop untill 100mph is maintain for 5 sec or <
 function myFunction(){
- 
   if((SpeedTimer.innerHTML) >= 100){
     BoolSpeed= true;
     SpeedMaintain++
@@ -24,30 +25,27 @@ function myFunction(){
     BoolSpeed= false;
     SpeedMaintain = 0;
   }
-if(Game1 == false){
-  if(SpeedMaintain >=5 ){
-  alert('gratz moving to next stage');
-  Game1=true;
+  if(Game1 == false){
+    if(SpeedMaintain >=5 ){
+    alert('gratz moving to next stage');
+    Game1=true;
+    }
+  }
+  else{
+    /** nothing futher  */
   }
 }
-else{
-
-}
-
-}
 
 
-SpeedTimer.addEventListener(`input`, function (event) {
-    
+SpeedTimer.addEventListener(`input`, function (event) {  
   alert(speedEl.innerHTML);
   if(number(speedEl.innerHTML) >= "50"){
     alert(speedEl.innerHTML);
-  }
-  
-    });
+    }
+  });
 
 
-    difficultySelectForm.addEventListener(`submit`, function (event) {
+difficultySelectForm.addEventListener(`submit`, function (event) {
 console.log("User clicked the start button");
 
   event.preventDefault();
