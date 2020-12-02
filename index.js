@@ -12,6 +12,22 @@ let intervalID = null;
 const timeDisplay = document.querySelector('.time-display');
 let timeInSeconds = 0;
 
+//storage
+const fastest = document.querySelector('.time');
+const fastestTimeSpan = document.querySelector('time-display');
+let storageAvailable = false;
+
+
+
+/*---------------------------------------------------------*/ 
+
+if (typeof(Storage) !== "undefined") {
+    storageAvailable = true;
+    if(localStorage.fastestTime){
+    /**	fastestTimeSpan.innerHTML = localStorage.fastestTime;
+     	fastest.classList.add('show');*/
+    }
+}
 
 
 // loop untill 100mph is maintain for 5 sec or <
@@ -26,9 +42,13 @@ function myFunction(){
     SpeedMaintain = 0;
   }
   if(Game1 == false){
-    if(SpeedMaintain >=5 ){
+    // if we maintain over 5 sec then we win  
+    if(SpeedMaintain >=5 ){ 
+      localStorage.fastestTime = timeInSeconds;
     alert('gratz moving to next stage');
+    localStorage.fastestTime= timeDisplay.textContent;
     Game1=true;
+    open('Game2.html',true);
     }
   }
   else{
