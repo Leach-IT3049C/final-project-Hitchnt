@@ -3,7 +3,7 @@
 let Game1 = false;
 const gameWrapper = document.getElementById(`app`);
 let SpeedTimer = document.getElementById(`speed`);
-const myInterval = setInterval(myFunction, 1000);
+const myInterval = setInterval(DidWeWinYet, 1000);
 let BoolSpeed = false;
 let SpeedMaintain = 0;
 // START 
@@ -31,7 +31,7 @@ if (typeof(Storage) !== "undefined") {
 
 
 // loop untill 100mph is maintain for 5 sec or <
-function myFunction(){
+function DidWeWinYet(){
   if((SpeedTimer.innerHTML) >= 100){
     BoolSpeed= true;
     SpeedMaintain++

@@ -7,12 +7,17 @@ dead.src = "Game2/sounds/WatchOut.wav";
 const pass = document.createElement("audio");
 pass.preload="auto";
 pass.src = "Game2/sounds/pass.wav";
+let Game2 = true;
+const StartingScreen = document.getElementById(`GameScreen`);
+const WinImg = document.getElementById(`Wingif`);
+//score
+const scorekeeper =0;
 
 // Game timer
 const timeDisplay = document.querySelector('.time-display');
 let intervalID = null;
 let timeInSeconds = 0;
-
+const myInterval = setInterval(DidWeWinYet, 1000); // check is the score needed has been met
 //storage
 const fastest = document.querySelector('.fastest');
 const fastestTimeSpan = document.getElementById('fastest-time');
@@ -141,7 +146,11 @@ FlappyBird.prototype = {
 	},
 	CountScore: function () { // Scoring
 		if (this.score == 0 && this.obsList[0].x + this.obsList[0].width < this.startX) {
-			pass.play();
+			
+			
+				pass.play();
+				
+				
 			this.score = 1;
 			return true;
 		}
@@ -156,7 +165,10 @@ FlappyBird.prototype = {
 	},
 	CanMove: function () { // Collision detection
 		if (this.bird.y < 0 || this.bird.y > this.mapHeight - this.bird.height - this.line) {
-			dead.play();
+			if (Game2 ) {
+				dead.play();
+				}
+			
 			this.gameOver = true;
 		} else {
 			var boundary = [{
@@ -176,7 +188,9 @@ FlappyBird.prototype = {
 				for (var j = 0; j < 4; j++)
 					if (boundary[j].x >= this.obsList[i].x && boundary[j].x <= this.obsList[i].x + this.obsList[i].width && boundary[j].y >= this.obsList[i].y && boundary[j].y <= this.obsList[i].y + this.obsList[i].height) {
 						this.gameOver = true;
-						dead.play();
+						if (Game2 ) {
+							dead.play();
+							}
 						break;
 					}
 				if (this.gameOver)
@@ -211,6 +225,7 @@ FlappyBird.prototype = {
 	ShowOver: function() {
 		var overImg = new Image();
 		overImg.src = "img/over.png";
+		localStorage.fastestTime= timeDisplay.textContent;
 		overImg.onload = function(){
 			c.drawImage(overImg, (this.mapWidth - overImg.width) / 2, (this.mapHeight - overImg.height) / 2 - 50);
 		}.bind(this);
@@ -323,8 +338,12 @@ function RunGame(speed) {
 					clearInterval(scoreTimer);
 					return;
 				}
-				pass.play();
+				if (Game2 ) {
+					pass.play();
+					}
+					
 				game.score++;
+			//	scorekeeper = game.score;
 			}, game.obsInterval);
 		}
 
@@ -346,4 +365,23 @@ function RunGame(speed) {
 		}
 		game.CreateObs();
 	}, game.obsInterval);
+}
+
+// loop untill score needed is met <
+function DidWeWinYet(){
+	if (Game2 == true) {
+		if((game.score) >= 2){
+			Game2 == false;
+			alert("Gratz You Won!!!")
+			Game2 = false;
+			StartingScreen.classList.add(`hidden`);
+			WinImg.classList.remove(`hidden`);
+		}
+		else{
+			
+		}
+	} 
+	else {
+		
+	}  
 }
