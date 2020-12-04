@@ -111,9 +111,9 @@ const controlExplosions = (game) => {
 
 
 // speed controller
-const acceleration = 10
+const acceleration = 15
 
-const MAX_SPEED = 100
+const MAX_SPEED = 150
 const MIN_SPEED = 0
 
 const setSpeed = (game, newSpeed) => {

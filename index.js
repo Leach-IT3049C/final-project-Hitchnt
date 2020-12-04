@@ -32,7 +32,7 @@ if (typeof(Storage) !== "undefined") {
 
 // loop untill 100mph is maintain for 5 sec or <
 function DidWeWinYet(){
-  if((SpeedTimer.innerHTML) >= 100){
+  if((SpeedTimer.innerHTML) >= 90){
     BoolSpeed= true;
     SpeedMaintain++
     
@@ -41,6 +41,16 @@ function DidWeWinYet(){
     BoolSpeed= false;
     SpeedMaintain = 0;
   }
+  if(timeDisplay.textContent >= 120 ){
+    gameWrapper.classList.add(`hidden`);
+    difficultySelectForm.classList.remove(`hidden`);
+    timeDisplay.textContent = 0 ;
+    timeInSeconds = 0;
+
+   // location.reload();
+    //setSpeed(this.game, 0);
+  }
+
   if(Game1 == false){
     // if we maintain over 5 sec then we win  
     if(SpeedMaintain >=5 ){ 
@@ -49,6 +59,7 @@ function DidWeWinYet(){
     localStorage.fastestTime= timeDisplay.textContent;
     Game1=true;
     open('Game2.html',true);
+    window.close();
     }
   }
   else{
@@ -67,7 +78,7 @@ SpeedTimer.addEventListener(`input`, function (event) {
 
 difficultySelectForm.addEventListener(`submit`, function (event) {
 console.log("User clicked the start button");
-
+timeInSeconds = 0;
   event.preventDefault();
   gameWrapper.classList.remove(`hidden`);
   difficultySelectForm.classList.add(`hidden`);

@@ -369,19 +369,27 @@ function RunGame(speed) {
 
 // loop untill score needed is met <
 function DidWeWinYet(){
+	if(timeDisplay.textContent >= 120 ){
+		
+		timeDisplay.textContent = 0 ;
+		timeInSeconds = 0;
+		alert("you lose , took to long")
+		open('Index.html',false);
+		window.close();
+	   // location.reload();
+		//setSpeed(this.game, 0);
+	  }
+	else
+	{
 	if (Game2 == true) {
-		if((game.score) >= 2){
+		if((game.score) >= 5){
 			Game2 == false;
 			alert("Gratz You Won!!!")
 			Game2 = false;
 			StartingScreen.classList.add(`hidden`);
 			WinImg.classList.remove(`hidden`);
-		}
-		else{
-			
-		}
+		}		
 	} 
-	else {
-		
-	}  
+	}
+	
 }
